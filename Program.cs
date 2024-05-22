@@ -8,13 +8,14 @@
 
             while(running)
             {
-                Console.WriteLine("Välkommen till huvudmenyn.\n" +
+                Console.Write("Välkommen till huvudmenyn.\n" +
                     "Vänligen använd de nummer som finns vid rubrikerna för att navigera i menyn!\n" +
                     "1. Ungdom eller Pensionär? - Ska personen betala normalpris, ungdomspris eller pensionärspris?\n" +
                     "2. Kostnad för gruppbio - Räkna ut kostnaden för flera biljetter.\n" +
                     "3. Upprepa 10 gånger - Repeterar din inmatning 10 gånger på en rad.\n" +
                     "4. Det tredje ordet - Printa ut det tredje ordet i den mening som du skrev in.\n" +
-                    "0. Avsluta programmet.");
+                    "0. Avsluta programmet.\n" +
+                    "> ");
                 string switchChoice = Console.ReadLine();
                 
                 switch (switchChoice)
@@ -27,10 +28,10 @@
                             //TODO: Säkerställa att åldern som anges är positiv. Fungerar ish nu men ser inte snyggt ut.
 
                             //Ta ålder, parsea om till integer. Fortsätt försöka tills en korrekt integer angivits.
-                            Console.WriteLine("Vänligen ange ålder.");
+                            Console.WriteLine("Vänligen ange ålder. >");
                             while (!int.TryParse(Console.ReadLine(), out age))
                             {
-                                Console.WriteLine("Ogiltig ålder, vänligen försök igen.");
+                                Console.WriteLine("Ogiltig ålder, vänligen försök igen. >");
                             }
                         } while (age < 0);
 
@@ -52,14 +53,36 @@
                             Console.WriteLine("Standardpris: 120kr\n");
                         }
                         
-                        
-                        
-
                         break;
                     case "2":
                         //Case 2 - Räkna ihop totalkostnaden av en grupp
-                        Console.WriteLine("TODO");
+                        int groupSize;
+                        int totalCost = 0;
+                        List<int> groupAges = new List<int>();
+                        Console.Write("Hur många är det i gruppen? >");
+
+
+                        //TODO: Varför fungerar inte && groupSize < 2....
+                        while (!int.TryParse(Console.ReadLine(),out groupSize) && groupSize < 2)
+                        {
+                            Console.Write("En grupp är 2 eller fler. Vänligen försök igen. >");
+                        }
+                        
+                        for (int i = 0; i < groupSize; i++)
+                        {
+                            Console.Write("Ålder på gruppmedlem nummer " + (i + 1) + "?");
+                            //TODO: Kontroll för att åldern som anges är korrekt input.
+                            groupAges.Add(int.Parse(Console.ReadLine()));
+                        }
+                        foreach (int i in groupAges)
+                        {
+                            totalCost += calculatePrice(i);
+                        }
+
+                        //TODO: Testa att allt funkar korrekt.
+                        Console.WriteLine("Totala kostnaden för gruppen är: " + totalCost + "kr.");                        
                         break;
+
                     case "3":
                         //Case 3 - Printa ut input 10 gånger på samma rad.
                         Console.WriteLine("TODO");
@@ -76,6 +99,26 @@
                         break;
 
                 }
+            }
+        }
+
+        static int calculatePrice(int age)
+        {
+            if (age < 5 || age > 99)
+            {
+                return 0;
+            }
+            else if (age >= 5 && age < 20)
+            {
+                return 80;
+            }
+            else if (age > 64 && age < 100)
+            {
+                return 90;
+            }
+            else
+            {
+                return 120;
             }
         }
     }
