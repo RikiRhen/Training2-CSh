@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Övning 2 C#", "Övning 2 C#.csproj", "{CAC3FB42-F40F-46F2-A904-D15B017102D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester-Övning2", "..\Tester-Övning2\Tester-Övning2.csproj", "{8C9817BD-4AAF-4B90-A536-39C27C955A52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CAC3FB42-F40F-46F2-A904-D15B017102D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC3FB42-F40F-46F2-A904-D15B017102D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC3FB42-F40F-46F2-A904-D15B017102D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9817BD-4AAF-4B90-A536-39C27C955A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9817BD-4AAF-4B90-A536-39C27C955A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9817BD-4AAF-4B90-A536-39C27C955A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9817BD-4AAF-4B90-A536-39C27C955A52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
