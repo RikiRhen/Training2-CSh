@@ -24,14 +24,6 @@ namespace Övning_2_C_
                 
                 switch (switchChoice)
                 {
-                    //Testcase. Behöver ett case och pilla hjälpmetoder med.
-                    /*
-                    case "5":
-                        string test1 = helper.takeInputString("Strängtest: >");
-                        int test2 = helper.takeInputInteger("Integertest: >");
-                        Console.WriteLine(test1 + ", " + test2);
-                        break;
-                    */
                     case "1":
                         //Case 1 - Ta input, parsea om till integer, printa ut text beroende på värdet av integern
                         int age = helper.takeInputInteger("\nÅlder? >");
@@ -42,13 +34,16 @@ namespace Övning_2_C_
 
                     case "2":
                         //Case 2 - Räkna ihop totalkostnaden av en grupp
+                        int totalCost = 0;
+                        List<int> groupAges = new List<int>();
+                        
                         int groupSize = helper.takeInputInteger("\nHur många är det i gruppen?");
+                        //Säkerställ att gruppen är faktiskt fler än 1.
                         while (groupSize < 2)
                         {
                             groupSize = helper.takeInputInteger("\nEn grupp måste vara 2 eller fler");
                         }
-                        int totalCost = 0;
-                        List<int> groupAges = new List<int>();
+                        
 
                         //Samla ihop samtliga åldrar i gruppen till en lista.
                         for (int i = 0; i < groupSize; i++)
@@ -62,7 +57,7 @@ namespace Övning_2_C_
                             totalCost += helper.calculatePrice(i);
                         }
 
-                        
+                        //Presentera kostnad.
                         Console.WriteLine("Totala kostnaden för gruppen är: " + totalCost + "kr.\n");                        
                         break;
 
@@ -71,18 +66,26 @@ namespace Övning_2_C_
                         string repeat = "";
                         string case3Input = helper.takeInputString("Vad vill du ha repeterat? >");
 
+                        //Konkatinera in case3Input till repeat 10 gånger.
                         for (int i = 0; i < 10; i++)
                         {
                             repeat += case3Input + ", ";
                         }
+
+                        //Presentera resultat.
                         Console.WriteLine(repeat);
 
                         break;
+
                     case "4":
                         //Case 4 - Input är en mening på minst 3 ord. Printa ut det tredje ordet.
                         string case4Input = helper.takeInputString("Skriv in en mening på minst 3 ord. >");
+                        //Rensa ut överflödiga mellanslag.
                         Regex.Replace(case4Input.Trim(), @"\s+", " ");
+                        //Skapa arrayn med samtliga ord som egna element.
                         string[] words = case4Input.Split(' ');
+
+                        //Presentera det tredje ordet.
                         Console.WriteLine("\nDet tredje ordet är: " + words[2]);
                         break;
 
