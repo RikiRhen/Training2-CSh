@@ -79,21 +79,37 @@
                             totalCost += calculatePrice(i);
                         }
 
-                        //TODO: Testa att allt funkar korrekt.
-                        Console.WriteLine("Totala kostnaden för gruppen är: " + totalCost + "kr.");                        
+                        
+                        Console.WriteLine("Totala kostnaden för gruppen är: " + totalCost + "kr.\n");                        
                         break;
 
                     case "3":
                         //Case 3 - Printa ut input 10 gånger på samma rad.
-                        Console.WriteLine("TODO");
+                        Console.WriteLine("Vad vill du ha repeterat? >");
+                        string repeat = "";
+
+                        //TODO: Kontroll för att åldern som anges är korrekt input. Blir många Console.ReadLine() kallelser. Hjälpmetod för detta när skelettet av programmet fungerar.
+                        string case3Input = Console.ReadLine();
+                        for (int i = 0; i < 10; i++)
+                        {
+                            repeat += case3Input + ", ";
+                        }
+                        Console.WriteLine(repeat);
+
                         break;
                     case "4":
                         //Case 4 - Input är en mening på minst 3 ord. Printa ut det tredje ordet.
-                        Console.WriteLine("TODO");
+                        Console.WriteLine("Skriv in en mening på minst 3 ord. >");
+                        string case4Input = Console.ReadLine();
+                        string[] words = case4Input.Split(' ');
+                        Console.WriteLine(words[2]);
                         break;
+
+
                     case "0":
                         running = false;
                         break;
+
                     default:
                         Console.WriteLine("Ogiltigt val, vänligen försök igen.\n");
                         break;
