@@ -5,9 +5,11 @@
         static void Main(string[] args)
         {
             bool running = true;
+            Helper helper = new Helper();
 
             while(running)
             {
+                
                 Console.Write("Välkommen till huvudmenyn.\n" +
                     "Vänligen använd de nummer som finns vid rubrikerna för att navigera i menyn!\n" +
                     "1. Ungdom eller Pensionär? - Ska personen betala normalpris, ungdomspris eller pensionärspris?\n" +
@@ -20,6 +22,13 @@
                 
                 switch (switchChoice)
                 {
+                    //Testcase. Behöver ett case och pilla hjälpmetoder med.
+                    case "5":
+                        string test1 = helper.takeInputString("Strängtest: >");
+                        int test2 = helper.takeInputInteger("Integertest: >");
+                        Console.WriteLine(test1 + ", " + test2);
+                        break;
+
                     case "1":
                         //Case 1 - Ta input, parsea om till integer, printa ut text beroende på värdet av integern
                         int age;
