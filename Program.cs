@@ -7,7 +7,6 @@ namespace Övning_2_C_
         static void Main(string[] args)
         {
             bool running = true;
-            Helper helper = new();
 
             while(running)
             {
@@ -26,10 +25,10 @@ namespace Övning_2_C_
                 {
                     case "1":
                         //Case 1 - Ta input, parsea om till integer, printa ut text beroende på värdet av integern
-                        int age = helper.takeInputInteger("\nÅlder? >");
+                        int age = Helper.TakeInputInteger("\nÅlder? >");
 
                         //Printa ut olika priser baserat på åldern, Gratis för under 5 och pensionärer över 100, 5-19 Ungdomspris: 80kr, över 64 Pensionärspris: 90kr, Standardpris 120kr. 
-                        Console.WriteLine(helper.checkAgeGroup(age));
+                        Console.WriteLine(Helper.CheckAgeGroup(age));
                         break;
 
                     case "2":
@@ -37,24 +36,24 @@ namespace Övning_2_C_
                         int totalCost = 0;
                         List<int> groupAges = new List<int>();
                         
-                        int groupSize = helper.takeInputInteger("\nHur många är det i gruppen?");
+                        int groupSize = Helper.TakeInputInteger("\nHur många är det i gruppen?");
                         //Säkerställ att gruppen är faktiskt fler än 1.
                         while (groupSize < 2)
                         {
-                            groupSize = helper.takeInputInteger("\nEn grupp måste vara 2 eller fler");
+                            groupSize = Helper.TakeInputInteger("\nEn grupp måste vara 2 eller fler");
                         }
                         
 
                         //Samla ihop samtliga åldrar i gruppen till en lista.
                         for (int i = 0; i < groupSize; i++)
                         {
-                            groupAges.Add(helper.takeInputInteger("Ålder på gruppmedlem nummer " + (i + 1) + "?"));
+                            groupAges.Add(Helper.TakeInputInteger("Ålder på gruppmedlem nummer " + (i + 1) + "?"));
                         }
 
                         //Iterera igenom listan och sätt ihop totalkostnaden.
                         foreach (int i in groupAges)
                         {
-                            totalCost += helper.calculatePrice(i);
+                            totalCost += Helper.CalculatePrice(i);
                         }
 
                         //Presentera kostnad.
@@ -64,7 +63,7 @@ namespace Övning_2_C_
                     case "3":
                         //Case 3 - Printa ut input 10 gånger på samma rad.
                         string repeat = "";
-                        string case3Input = helper.takeInputString("Vad vill du ha repeterat? >");
+                        string case3Input = Helper.TakeInputString("Vad vill du ha repeterat? >");
 
                         //Konkatinera in case3Input till repeat 10 gånger.
                         for (int i = 0; i < 10; i++)
@@ -79,7 +78,7 @@ namespace Övning_2_C_
 
                     case "4":
                         //Case 4 - Input är en mening på minst 3 ord. Printa ut det tredje ordet.
-                        string case4Input = helper.takeInputString("Skriv in en mening på minst 3 ord. >");
+                        string case4Input = Helper.TakeInputString("Skriv in en mening på minst 3 ord. >");
                         //Rensa ut överflödiga mellanslag.
                         Regex.Replace(case4Input.Trim(), @"\s+", " ");
                         //Skapa arrayn med samtliga ord som egna element.

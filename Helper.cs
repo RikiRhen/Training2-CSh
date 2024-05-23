@@ -18,7 +18,7 @@ namespace Övning_2_C_
         /// </summary>
         /// <param name="prompt"></param>
         /// <returns></returns>
-        public string takeInputString(string prompt)
+        public static string TakeInputString(string prompt)
         {
             string result;
             Console.WriteLine(prompt);
@@ -43,7 +43,7 @@ namespace Övning_2_C_
         /// </summary>
         /// <param name="prompt"></param>
         /// <returns></returns>
-        public int takeInputInteger(string prompt)
+        public static int TakeInputInteger(string prompt)
         {
             int result;
             Console.WriteLine(prompt);
@@ -68,7 +68,7 @@ namespace Övning_2_C_
         /// </summary>
         /// <param name="age"></param>
         /// <returns></returns>
-        public int calculatePrice(int age)
+        public static int CalculatePrice(int age)
         {
             if (age < 5 || age > 99)
             {
@@ -93,7 +93,7 @@ namespace Övning_2_C_
         /// </summary>
         /// <param name="age"></param>
         /// <returns></returns>
-        public string checkAgeGroup(int age)
+        public static string CheckAgeGroup(int age)
         {
             if (age < 5 || age > 99)
             {
