@@ -36,7 +36,6 @@ namespace Övning_2_C_
                     Console.WriteLine("Fältet kan inte lämas tom, vänligen försök igen.");
                 }
             } while (string.IsNullOrWhiteSpace(result));
-            result = Regex.Replace(result.Trim(), @"\s+", " ");
             return result;
         }
 
