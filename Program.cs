@@ -20,7 +20,7 @@ namespace Övning_2_C_
                     "4. Det tredje ordet - Printa ut det tredje ordet i den mening som du skrev in.\n" +
                     "0. Avsluta programmet.\n" +
                     "> ");
-                string switchChoice = Console.ReadLine();
+                string switchChoice = Console.ReadLine()!;
                 
                 switch (switchChoice)
                 {

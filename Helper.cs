@@ -24,7 +24,7 @@ namespace Övning_2_C_
             Console.WriteLine(prompt);
             do 
             {                
-                result = Console.ReadLine();
+                result = Console.ReadLine()!;
                 if (string.IsNullOrEmpty(result))
                 {
                     Console.WriteLine("Fältet kan inte lämnas tom, vänligen försök igen.");
