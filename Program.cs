@@ -80,7 +80,7 @@
                         //Case 4 - Input är en mening på minst 3 ord. Printa ut det tredje ordet.
                         string case4Input = helper.takeInputString("Skriv in en mening på minst 3 ord. >");
                         string[] words = case4Input.Split(' ');
-                        Console.WriteLine(words[2]);
+                        Console.WriteLine("\nDet tredje ordet är: " + words[2]);
                         break;
 
 
