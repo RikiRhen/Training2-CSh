@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             bool running = true;
-            Helper helper = new Helper();
+            Helper helper = new();
 
             while(running)
             {
@@ -23,69 +23,41 @@
                 switch (switchChoice)
                 {
                     //Testcase. Behöver ett case och pilla hjälpmetoder med.
+                    /*
                     case "5":
                         string test1 = helper.takeInputString("Strängtest: >");
                         int test2 = helper.takeInputInteger("Integertest: >");
                         Console.WriteLine(test1 + ", " + test2);
                         break;
-
+                    */
                     case "1":
                         //Case 1 - Ta input, parsea om till integer, printa ut text beroende på värdet av integern
-                        int age;
-                        do
-                        {
-                            //TODO: Säkerställa att åldern som anges är positiv. Fungerar ish nu men ser inte snyggt ut.
-
-                            //Ta ålder, parsea om till integer. Fortsätt försöka tills en korrekt integer angivits.
-                            Console.WriteLine("Vänligen ange ålder. >");
-                            while (!int.TryParse(Console.ReadLine(), out age))
-                            {
-                                Console.WriteLine("Ogiltig ålder, vänligen försök igen. >");
-                            }
-                        } while (age < 0);
+                        int age = helper.takeInputInteger("\nÅlder? >");
 
                         //Printa ut olika priser baserat på åldern, Gratis för under 5 och pensionärer över 100, 5-19 Ungdomspris: 80kr, över 64 Pensionärspris: 90kr, Standardpris 120kr. 
-                        if (age < 5 || age > 99)
-                        {
-                            Console.WriteLine("Gratis inträde!\n");
-                        }
-                        else if (age >= 5 && age < 20)
-                        {
-                            Console.WriteLine("Ungdomspris: 80kr\n");
-                        }
-                        else if (age > 64 && age < 100)
-                        {
-                            Console.WriteLine("Pensionärspris: 90kr\n");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Standardpris: 120kr\n");
-                        }
-                        
+                        Console.WriteLine(helper.checkAgeGroup(age));
                         break;
+
                     case "2":
                         //Case 2 - Räkna ihop totalkostnaden av en grupp
-                        int groupSize;
+                        int groupSize = helper.takeInputInteger("\nHur många är det i gruppen?");
+                        while (groupSize < 2)
+                        {
+                            groupSize = helper.takeInputInteger("\nEn grupp måste vara 2 eller fler");
+                        }
                         int totalCost = 0;
                         List<int> groupAges = new List<int>();
-                        Console.Write("Hur många är det i gruppen? >");
 
-
-                        //TODO: Varför fungerar inte && groupSize < 2....
-                        while (!int.TryParse(Console.ReadLine(),out groupSize) && groupSize < 2)
-                        {
-                            Console.Write("En grupp är 2 eller fler. Vänligen försök igen. >");
-                        }
-                        
+                        //Samla ihop samtliga åldrar i gruppen till en lista.
                         for (int i = 0; i < groupSize; i++)
                         {
-                            Console.Write("Ålder på gruppmedlem nummer " + (i + 1) + "?");
-                            //TODO: Kontroll för att åldern som anges är korrekt input.
-                            groupAges.Add(int.Parse(Console.ReadLine()));
+                            groupAges.Add(helper.takeInputInteger("Ålder på gruppmedlem nummer " + (i + 1) + "?"));
                         }
+
+                        //Iterera igenom listan och sätt ihop totalkostnaden.
                         foreach (int i in groupAges)
                         {
-                            totalCost += calculatePrice(i);
+                            totalCost += helper.calculatePrice(i);
                         }
 
                         
@@ -94,11 +66,9 @@
 
                     case "3":
                         //Case 3 - Printa ut input 10 gånger på samma rad.
-                        Console.WriteLine("Vad vill du ha repeterat? >");
                         string repeat = "";
+                        string case3Input = helper.takeInputString("Vad vill du ha repeterat? >");
 
-                        //TODO: Kontroll för att åldern som anges är korrekt input. Blir många Console.ReadLine() kallelser. Hjälpmetod för detta när skelettet av programmet fungerar.
-                        string case3Input = Console.ReadLine();
                         for (int i = 0; i < 10; i++)
                         {
                             repeat += case3Input + ", ";
@@ -108,8 +78,7 @@
                         break;
                     case "4":
                         //Case 4 - Input är en mening på minst 3 ord. Printa ut det tredje ordet.
-                        Console.WriteLine("Skriv in en mening på minst 3 ord. >");
-                        string case4Input = Console.ReadLine();
+                        string case4Input = helper.takeInputString("Skriv in en mening på minst 3 ord. >");
                         string[] words = case4Input.Split(' ');
                         Console.WriteLine(words[2]);
                         break;
@@ -124,26 +93,6 @@
                         break;
 
                 }
-            }
-        }
-
-        static int calculatePrice(int age)
-        {
-            if (age < 5 || age > 99)
-            {
-                return 0;
-            }
-            else if (age >= 5 && age < 20)
-            {
-                return 80;
-            }
-            else if (age > 64 && age < 100)
-            {
-                return 90;
-            }
-            else
-            {
-                return 120;
             }
         }
     }
